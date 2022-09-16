@@ -120,7 +120,7 @@ function getId(id) {
   getLatestMovies().then((peliculas) => {
     latestMovies = peliculas;
 
-    console.log(latestMovies);
+    // console.log(latestMovies);
 
     const buildProductList = (movieList) => {
       //select the parent HTML tag
