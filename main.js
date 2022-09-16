@@ -51,13 +51,11 @@ btnNews.onclick = () => {
       p -= 1;
     }
     getTopMovies(p);
-    // getPopularMovies(p);
   };
   
   btnNextPage.onclick = () => {
     p++;
     getTopMovies(p);
-    // getPopularMovies(p);
   };
 }
 

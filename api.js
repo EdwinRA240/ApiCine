@@ -7,7 +7,7 @@ function getPopularMovies(p) {
       let response = await axios.get(moviesUrl);
       return response.data.results;
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return [];
     }
   }
@@ -17,7 +17,7 @@ function getPopularMovies(p) {
   getLatestMovies().then((peliculas) => {
     latestMovies = peliculas;
 
-    console.log(latestMovies);
+    // console.log(latestMovies);
 
     const buildProductList = (movieList) => {
       //select the parent HTML tag
@@ -59,7 +59,7 @@ function getTopMovies(p) {
       let response = await axios.get(moviesUrl);
       return response.data.results;
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return [];
     }
   }
@@ -111,7 +111,7 @@ function getId(id) {
       let response = await axios.get(moviesUrl);
       return response.data.results;
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return [];
     }
   }
