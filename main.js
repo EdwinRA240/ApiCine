@@ -3,6 +3,9 @@ const btnPrePage = document.getElementById("prePage");
 const btnNextPage = document.getElementById("nextPage");
 const btnNews = document.getElementById("btnNews");
 const btnPopulares = document.getElementById("btnPopulares");
+const btnMasDetalles = document.getElementById("btnMasDetalles");
+
+if(btnMasDetalles){btnMasDetalles.onclick = () => { console.log("MasDetalles clicked"); };}
 
 window.addEventListener("DOMContentLoaded", () => { 
   p = 1;
@@ -12,7 +15,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (p == 1) {
       p = 1;
     } else {
-      /* Subtracting 1 from the value of p. */
       p -= 1;
     }
     getPopularMovies(p);
@@ -74,7 +76,3 @@ btnNews.onclick = () => {
     getTopMovies(p);
   };
 }
-
-btnMasDetalles.onclick = () => {
-  getId(p);
-};

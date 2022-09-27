@@ -35,51 +35,15 @@ function getPopularMovies(p) {
         newDiv.style.width = "10rem";
 
         //creating childs into the parent element section
-        newDiv.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="img">
-            <div class="card-body">
+        newDiv.innerHTML = 
+        `
+          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="img">
+          <div class="card-body">
             <h7 class="card-title fw-bold">${movie.title}</h7>
             <p class="card-text">Popularidad: ${movie.popularity}</p>
-            
-            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-              tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          TE LA CREISTE NATI 🙈
-                      </div>
-                      <div class="modal-footer">
-                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
-                      </div>
-                  </div>
-              </div>
+            <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
           </div>
-          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-              tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          TE LA VOLVISTE A CREER NATI 👽
-                      </div>
-                      <div class="modal-footer">
-                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a>
-          
-    </div>
-    `;
-        // <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
+         `;
         getParentElement.appendChild(newDiv);
       });
     };
@@ -146,9 +110,9 @@ function getId(id) {
     let moviesUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
     try {
       let response = await axios.get(moviesUrl);
+      console.log(response);
       return response.data.results;
     } catch (e) {
-      // console.log(e);
       return [];
     }
   }
@@ -174,10 +138,8 @@ function getId(id) {
         newDiv.classList.add("carousel");
         newDiv.classList.add("slide");
 
-        //creating childs into the parent element sectio11n
+        //creating childs into the parent element section
         newDiv.innerHTML = `
-            <div class="carousel-indicators">
-            </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="d-block w-100" alt="...">
@@ -197,3 +159,41 @@ function getId(id) {
     buildProductList(latestMovies);
   });
 }
+
+
+
+{/* <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            TE LA CREISTE NATI 🙈
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            TE LA VOLVISTE A CREER NATI 👽
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
+        </div>
+    </div>
+</div>
+</div>
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a> */}
