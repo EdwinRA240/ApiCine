@@ -1,12 +1,28 @@
+/* The above code is getting the value of the button and then adding an event listener to it. */
 const btnPrePage = document.getElementById("prePage");
 const btnNextPage = document.getElementById("nextPage");
 const btnNews = document.getElementById("btnNews");
 const btnPopulares = document.getElementById("btnPopulares");
-const btnMasDetalles = document.getElementById("btnMasDetalles");
-let p = 1;
 
 window.addEventListener("DOMContentLoaded", () => { 
+  p = 1;
   getPopularMovies(p);
+
+  btnPrePage.onclick = () => {
+    if (p == 1) {
+      p = 1;
+    } else {
+      /* Subtracting 1 from the value of p. */
+      p -= 1;
+    }
+    getPopularMovies(p);
+  };
+  
+  btnNextPage.onclick = () => {
+    p++;
+    getPopularMovies(p);
+  };
+
 }); 
 
 btnPrePage.onclick = () => {
@@ -61,5 +77,4 @@ btnNews.onclick = () => {
 
 btnMasDetalles.onclick = () => {
   getId(p);
-  // console.log(p);
 };

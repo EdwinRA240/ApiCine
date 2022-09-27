@@ -42,42 +42,41 @@ function getPopularMovies(p) {
             <p class="card-text">Popularidad: ${movie.popularity}</p>
             
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    TE LA CREISTE NATI 🙈
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    TE LA VOLVISTE A CREER NATI 👽
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver descripcion</a>
-
-            
+              tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          TE LA CREISTE NATI 🙈
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+              tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          TE LA VOLVISTE A CREER NATI 👽
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a>
+          
     </div>
     `;
         // <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
