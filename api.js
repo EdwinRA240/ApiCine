@@ -40,9 +40,47 @@ function getPopularMovies(p) {
             <div class="card-body">
             <h7 class="card-title fw-bold">${movie.title}</h7>
             <p class="card-text">Popularidad: ${movie.popularity}</p>
-            <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
+            
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {DESCRIPCION}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
+                </div>
             </div>
-        `;
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {VIDEO}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver descripcion</a>
+
+            
+    </div>
+    `;
+        // <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
         getParentElement.appendChild(newDiv);
       });
     };
@@ -138,7 +176,7 @@ function getId(id) {
         newDiv.classList.add("slide");
 
         //creating childs into the parent element sectio11n
-        newDiv.innerHTML = `1
+        newDiv.innerHTML = `
             <div class="carousel-indicators">
             </div>
             <div class="carousel-inner">

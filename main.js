@@ -61,5 +61,5 @@ btnNews.onclick = () => {
 
 btnMasDetalles.onclick = () => {
   getId(p);
-  console.log(p);
+  // console.log(p);
 };
