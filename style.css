@@ -1,0 +1,14 @@
+.a0 {
+    color: black;
+    font-size: 2rem;
+}
+
+.a1 {
+    color: black;
+    font-size: 1rem;
+}
+
+body {
+    background: rgb(223, 223, 223);
+    background: linear-gradient(0deg, #ffff 0%,#0d6efd 90%);
+}
