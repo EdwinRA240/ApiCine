@@ -1,16 +1,27 @@
 const API_KEY = "d367f0aa1b646902549724b33acb81a6";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 function getPopularMovies(p) {
   async function getLatestMovies() {
-    let moviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${p}`;
+    let moviesUrl = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${p}`;
     try {
       let response = await axios.get(moviesUrl);
       return response.data.results;
     } catch (e) {
-      // console.log(e);
-      return [];
+      return e;
     }
   }
+
+  const getData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
 
   let latestMovies;
 
@@ -25,7 +36,18 @@ function getPopularMovies(p) {
       getParentElement.innerHTML = "";
 
       //Loop the product list array in order to generate the <section> </section>
-      movieList.forEach((movie) => {
+      movieList.forEach(async (movie) => {
+
+        const showData = async () => {
+          const finalData = await getData(
+            `${BASE_URL}/movie/${movie.id}?api_key=${API_KEY}&language=en-US`
+          );
+          return finalData;
+        };
+        
+        await console.log(showData());
+        var overviewID = await showData();
+
         //creating the section cards
         const newDiv = document.createElement("div");
 
@@ -35,20 +57,55 @@ function getPopularMovies(p) {
         newDiv.style.width = "10rem";
 
         //creating childs into the parent element section
-        newDiv.innerHTML = 
-        `
+        newDiv.innerHTML = `
           <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="img">
           <div class="card-body">
             <h7 class="card-title fw-bold">${movie.title}</h7>
             <p class="card-text">Popularidad: ${movie.popularity}</p>
-            <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
-          </div>
-         `;
+            
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Descripcion: ${overviewID}
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">Trailer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        TE LA VOLVISTE A CREER NATI 👽
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a>
+            
+            </div>
+            `;
+        // <a href="#" class="btn btn-primary" id="btnMasDetalles">Mas detalles</a>
         getParentElement.appendChild(newDiv);
       });
     };
 
-    // window.addEventListener("DOMContentLoaded", () => { });
     buildProductList(latestMovies);
   });
 }
@@ -160,9 +217,7 @@ function getId(id) {
   });
 }
 
-
-
-{/* <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+/* <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
 tabindex="-1">
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -196,4 +251,4 @@ tabindex="-1">
     </div>
 </div>
 </div>
-<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a> */}
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a> */
