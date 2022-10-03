@@ -12,7 +12,7 @@ function getPopularMovies(p) {
     }
   }
 
-  const getData = async (url) => {
+  const getDataId = async (url) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -37,16 +37,11 @@ function getPopularMovies(p) {
 
       //Loop the product list array in order to generate the <section> </section>
       movieList.forEach(async (movie) => {
-
-        const showData = async () => {
-          const finalData = await getData(
-            `${BASE_URL}/movie/${movie.id}?api_key=${API_KEY}&language=en-US`
-          );
-          return finalData;
-        };
-        
-        await console.log(showData());
-        var overviewID = await showData();
+        let overviewID = await getDataId(
+          `${BASE_URL}/movie/${movie.id}?api_key=${API_KEY}&language=es-ES`
+        ).then(async (response) => {
+          return await response.overview;
+        });
 
         //creating the section cards
         const newDiv = document.createElement("div");
@@ -58,21 +53,22 @@ function getPopularMovies(p) {
 
         //creating childs into the parent element section
         newDiv.innerHTML = `
-          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="img">
+          <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" class="card-img-top" alt="img">
           <div class="card-body">
-            <h7 class="card-title fw-bold">${movie.title}</h7>
-            <p class="card-text">Popularidad: ${movie.popularity}</p>
-            
-            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+		  <h7 class="card-title fw-bold">${movie.title}</h7>
+		  <p class="card-text">Popularidad: ${movie.popularity}</p>
+		  
+		  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+		  tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Descripcion</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel">${movie.title}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Descripcion: ${overviewID}
+						<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="img-fluid" alt="img">
+						<h6>Descripcion:</h6> <h7>${overviewID}</h7>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Ver Trailer</button>
@@ -89,7 +85,7 @@ function getPopularMovies(p) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        TE LA VOLVISTE A CREER NATI 👽
+                        VIDEO 🎬
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Regresar</button>
