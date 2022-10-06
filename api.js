@@ -67,7 +67,7 @@ function getPopularMovies(p) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-						<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="img-fluid" alt="img">
+						<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="img-fluid mb-4" alt="img">
 						<h6>Descripcion:</h6> <h7>${overviewID}</h7>
                     </div>
                     <div class="modal-footer">
